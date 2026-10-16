@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="img/emblem.png">
+<meta property="og:title" content="Daydreams of a Mad King">
+<meta property="og:description" content="Rock alternatif, Bordeaux. Dates, titres et contact.">
+<meta property="og:image" content="https://daydreamsofamadking.com/img/groupe-2.jpg">
+<meta property="og:url" content="https://daydreamsofamadking.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>Daydreams of a Mad King</title>
+<meta name="description" content="Daydreams of a Mad King (DMK), groupe de rock alternatif de Bordeaux. Dates de concerts, titres, maquettes et contact booking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Archivo:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: asphalt and cream from the logo, the graffiti magenta as the one loud note; full-bleed photo bands, condensed caps for structure. Single dark look by choice. */
+:root{
+  --bg:#121110;        /* asphalt */
+  --surface:#1b1917;
+  --fg:#f0ead6;        /* logo cream */
+  --muted:#a59d8e;
+  --line:#33302b;
+  --accent:#ec3d8f;    /* graffiti magenta */
+  --display:"Big Shoulders Display","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{display:block;max-width:100%}
+.wrap{max-width:66rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+.label{font-family:var(--display);text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:.95rem;color:var(--muted)}
+
+/* nav */
+.top{position:absolute;top:0;left:0;right:0;z-index:2}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1rem}
+.top img{width:2.6rem;height:auto}
+nav{display:flex;flex-wrap:wrap;gap:.3rem 1.3rem;justify-content:flex-end}
+nav a{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-weight:800;font-size:1rem;text-decoration:none;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+nav a:hover{color:var(--accent)}
+
+/* hero */
+.hero{position:relative;isolation:isolate}
+.hero-photo{width:100%;height:clamp(24rem,60vw,42rem);object-fit:cover;object-position:50% 40%}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(18,17,16,.55) 0%,rgba(18,17,16,0) 22%,rgba(18,17,16,0) 45%,var(--bg) 100%)}
+.hero-text{position:absolute;left:0;right:0;bottom:0;z-index:1}
+.hero-text .wrap{display:grid;gap:.9rem;padding-block:0 1.6rem}
+.hero h1 img{width:min(30rem,82vw);height:auto;filter:drop-shadow(0 2px 14px rgba(0,0,0,.6))}
+.tagline{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:baseline}
+.tagline .label{color:var(--fg)}
+.tagline em{color:var(--accent);font-style:italic}
+
+.lead-band{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;align-items:center;justify-content:space-between;padding-block:1.6rem 3rem;border-bottom:1px solid var(--line)}
+.next{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.3rem;align-items:center;min-width:0}
+.next .day{font-family:var(--display);font-weight:900;font-size:3.6rem;line-height:.82;text-align:center;color:var(--accent)}
+.next .day small{display:block;font-size:1rem;letter-spacing:.14em;color:var(--fg);font-weight:800;text-transform:uppercase}
+.next strong{font-family:var(--display);text-transform:uppercase;font-weight:800;letter-spacing:.03em;font-size:1.65rem;display:block;line-height:1.05}
+.next p{margin:.25rem 0 0;color:var(--muted);font-size:.95rem}
+.ctas{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:1.02rem;text-decoration:none;
+  padding:.6rem 1.15rem;border:2px solid var(--fg);display:inline-flex;align-items:center;background:none;color:var(--fg);cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#120f10}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary:hover{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+
+/* sections */
+section{padding-block:4rem;border-bottom:1px solid var(--line);scroll-margin-top:1rem}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.4rem 1rem;margin-bottom:2rem}
+.sec-head h2{font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:clamp(2.6rem,7vw,4.2rem);line-height:.9;letter-spacing:.01em}
+
+/* dates */
+.dates{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.date{display:grid;grid-template-columns:6rem 1fr auto;gap:.4rem 1.5rem;align-items:center;padding-block:1.3rem;border-bottom:1px solid var(--line)}
+.date time{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:1;font-variant-numeric:tabular-nums}
+.date time b{display:block;font-size:2.7rem;font-weight:900;color:var(--accent)}
+.date time span{font-size:.95rem;letter-spacing:.12em}
+.date h3{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:1.7rem;letter-spacing:.02em;line-height:1.05}
+.date p{margin:.2rem 0 0;color:var(--muted);font-size:.97rem}
+.date .meta{font-family:var(--display);font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:1rem;text-align:right;white-space:nowrap}
+.past{margin-top:2.4rem}
+.past p{margin:.5rem 0 0;color:var(--muted);max-width:68ch}
+
+/* listen */
+.listen{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:2.5rem}
+.listen h3{margin-bottom:.8rem}
+.tracks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);counter-reset:t}
+.tracks li{display:grid;grid-template-columns:2.4rem 1fr auto;gap:.8rem;align-items:baseline;padding-block:.85rem;border-bottom:1px solid var(--line);counter-increment:t}
+.tracks li::before{content:counter(t,decimal-leading-zero);font-family:var(--display);font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.tracks .name{font-weight:500;font-size:1.08rem;min-width:0}
+.tracks .tag{font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.85rem;color:var(--muted)}
+.tracks .tag.out{color:var(--accent)}
+.note{color:var(--muted);font-size:.95rem;margin:.9rem 0 0;max-width:60ch}
+.player{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.player li{display:grid;grid-template-columns:3.2rem 1fr auto;gap:1rem;align-items:center;padding-block:1rem;border-bottom:1px solid var(--line)}
+.play{width:3.2rem;height:3.2rem;border-radius:50%;border:2px solid var(--fg);background:none;color:var(--fg);display:grid;place-items:center;cursor:pointer;padding:0}
+.play svg{width:1.1rem;height:1.1rem;fill:currentColor}
+.play .i-pause{display:none}
+li.playing .play{background:var(--accent);border-color:var(--accent);color:#120f10}
+li.playing .play .i-play{display:none}
+li.playing .play .i-pause{display:inline}
+.play:hover{border-color:var(--accent);color:var(--accent)}
+li.playing .play:hover{color:#120f10}
+.info{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem;min-width:0}
+.info .name{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:1.6rem;line-height:1.05;letter-spacing:.02em}
+.info .tag{font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.85rem;color:var(--muted)}
+.info .tag.out{color:var(--accent)}
+.seek{flex-basis:100%;width:100%;margin:.5rem 0 0;accent-color:var(--accent);height:1.2rem;cursor:pointer}
+.time{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+li.playing .time{color:var(--fg)}
+.platforms{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+
+/* band */
+.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:2.5rem;align-items:start}
+.band figure{margin:0}
+.band figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
+.band .lead{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(1.7rem,3.6vw,2.3rem);line-height:1.02;margin:0 0 1.4rem;max-width:20ch}
+.band .lead em{font-style:normal;color:var(--accent)}
+.band p{margin:0 0 1rem;max-width:60ch}
+.lineup{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));border-top:1px solid var(--line);margin-top:1.8rem}
+.lineup div{padding:1rem 1rem 1rem 0;border-bottom:1px solid var(--line)}
+.lineup strong{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:2rem;line-height:1}
+.shows{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1.5rem;margin-top:3rem}
+.shows article{border-top:3px solid var(--accent);padding-top:.9rem}
+.shows h3{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:1.5rem;letter-spacing:.03em}
+.shows p{margin:.3rem 0 0;color:var(--muted);font-size:.97rem}
+
+/* photo strip */
+.strip{display:grid;grid-template-columns:1fr 1fr;gap:4px;border-bottom:1px solid var(--line)}
+.strip img{width:100%;aspect-ratio:16/9;object-fit:cover}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:2.5rem;align-items:start}
+.mail{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,5vw,2.4rem);letter-spacing:.01em;overflow-wrap:anywhere;user-select:all;margin:.3rem 0 1rem;display:block;line-height:1.1}
+.socials{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.socials a{display:flex;justify-content:space-between;gap:1rem;padding-block:.75rem;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:1.1rem}
+.socials a span{color:var(--muted);text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:400;font-size:.92rem;text-align:right;min-width:0;overflow-wrap:anywhere}
+.socials a:hover{color:var(--accent)}
+footer .wrap{padding-block:3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+footer img{width:6rem;height:auto;opacity:.9}
+
+@media (max-width:560px){
+  .date{grid-template-columns:4.6rem 1fr}
+  .date .meta{grid-column:2;text-align:left}
+  .top img{width:2.1rem}
+  nav a{font-size:.9rem;letter-spacing:.1em}
+  .strip{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .btn,nav a,.socials a{transition:color .15s,background .15s,border-color .15s}
+}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="top"><div class="wrap">
+    <img src="img/emblem.png" alt="DMK">
+    <nav aria-label="Sections"><a href="#dates">Dates</a><a href="#ecouter">Écouter</a><a href="#groupe">Le groupe</a><a href="#contact">Contact</a></nav>
+  </div></div>
+  <img class="hero-photo" src="img/groupe-2.jpg" alt="Les membres de DMK devant un mur de graffitis">
+  <div class="hero-text"><div class="wrap">
+    <h1><img src="img/wordmark.png" alt="Daydreams of a Mad King"></h1>
+    <div class="tagline"><span class="label">Rock alternatif · Bordeaux</span><em>Enter the tales…</em></div>
+  </div></div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="lead-band">
+      <div class="next" id="next" aria-live="polite"></div>
+      <div class="ctas">
+        <a class="btn primary" href="https://open.spotify.com/artist/6qt9lMSReJ0amNUNCEISMu" target="_blank" rel="noopener">Écouter sur Spotify</a>
+        <a class="btn" href="#dates">Toutes les dates</a>
+      </div>
+    </div>
+
+    <section id="dates">
+      <div class="sec-head"><h2>Dates</h2><span class="label">Saison 2026</span></div>
+      <ol class="dates" id="dateList"></ol>
+      <div class="past">
+        <span class="label">Ils nous ont déjà accueillis</span>
+        <p>Le Steady, Le Salem, V and B, Le Dropkick, L’Antidote, Shop Suey, Fête de la musique au parc de Fontaudin (Pessac) et sur les remparts de Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Les Aganit’s, Kick Off Day.</p>
+      </div>
+    </section>
+
+    <section id="ecouter">
+      <div class="sec-head"><h2>Écouter</h2><span class="label">3 titres · à écouter ici</span></div>
+      <ol class="player" id="player">
+        <li data-src="audio/day-in-hell.mp3" data-dur="497">
+          <button class="play" type="button" aria-label="Lire Day in Hell"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></button>
+          <div class="info"><span class="name">Day in Hell</span><span class="tag out">Premier single</span>
+            <input class="seek" type="range" min="0" max="497" step="1" value="0" aria-label="Position dans Day in Hell" id="seek-1"></div>
+          <span class="time">8:17</span>
+        </li>
+        <li data-src="audio/the-party.mp3" data-dur="338">
+          <button class="play" type="button" aria-label="Lire The Party"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></button>
+          <div class="info"><span class="name">The Party</span><span class="tag out">Deuxième single</span>
+            <input class="seek" type="range" min="0" max="338" step="1" value="0" aria-label="Position dans The Party" id="seek-2"></div>
+          <span class="time">5:38</span>
+        </li>
+        <li data-src="audio/lost-in-my-head-acoustic.mp3" data-dur="419">
+          <button class="play" type="button" aria-label="Lire Lost in My Head, version acoustique"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></button>
+          <div class="info"><span class="name">Lost in My Head</span><span class="tag">Bonus · version acoustique</span>
+            <input class="seek" type="range" min="0" max="419" step="1" value="0" aria-label="Position dans Lost in My Head" id="seek-3"></div>
+          <span class="time">6:59</span>
+        </li>
+      </ol>
+      <audio id="audio" preload="none"></audio>
+      <div class="platforms">
+        <a class="btn primary" href="https://open.spotify.com/artist/6qt9lMSReJ0amNUNCEISMu" target="_blank" rel="noopener">Spotify</a>
+        <a class="btn" href="https://www.deezer.com/search/Daydreams%20of%20a%20Mad%20King" target="_blank" rel="noopener">Deezer</a>
+        <a class="btn" href="https://www.youtube.com/channel/UCJj4eGcGGL8Bsy0d2TF2lqg" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </section>
+
+    <section id="groupe">
+      <div class="sec-head"><h2>Le groupe</h2><span class="label">Bordeaux · depuis 2023</span></div>
+      <div class="band">
+        <figure><img src="img/groupe-portrait.jpg" alt="Portrait du groupe DMK sous un hangar" loading="lazy"></figure>
+        <div>
+          <p class="lead">Taillé pour le live. <em>On vous attend devant la scène.</em></p>
+          <p>Daydreams of a Mad King (DMK), c’est du rock alternatif, du métal avec des touches de blues, de funk, d’indus et de prog : des ambiances changeantes, des mélodies qui restent en tête, et des morceaux qui montent en tension pour raconter des histoires.</p>
+          <p>Avec deux guitares, une batterie, un son lourd et une voix singulière, le trio bordelais est taillé pour le live : un set direct, sans artifice, où on joue ensemble et fort.</p>
+          <div class="lineup">
+            <div><strong>Kev</strong><span class="label">Chant & guitare</span></div>
+            <div><strong>Oliv’</strong><span class="label">Guitare</span></div>
+            <div><strong>Yann</strong><span class="label">Batterie</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="shows">
+        <article><h3>Main Show</h3><p>Le set électrique complet, compos originales.</p></article>
+        <article><h3>Unplugged Experience</h3><p>Nos morceaux revisités en acoustique.</p></article>
+        <article><h3>Acoustic Covers</h3><p>Classiques rock et métal en version acoustique. Plus de 4 h de set au total.</p></article>
+      </div>
+    </section>
+  </div>
+
+  <div class="strip" aria-label="Photos du groupe">
+    <img src="img/groupe-kev.jpg" alt="DMK, séance photo 2026" loading="lazy">
+    <img src="img/groupe-1.jpg" alt="DMK, séance photo 2026" loading="lazy">
+  </div>
+
+  <div class="wrap">
+    <section id="contact" style="border-bottom:0">
+      <div class="sec-head"><h2>Contact</h2><span class="label">Booking · presse</span></div>
+      <div class="contact">
+        <div>
+          <span class="label">Écrivez-nous</span>
+          <span class="mail" id="mail">daydreamsofamadking@gmail.com</span>
+          <button class="btn" id="copy" type="button">Copier l’adresse</button>
+          <p class="note">Production : PYKO PROD, Bordeaux.</p>
+        </div>
+        <ul class="socials">
+          <li><a href="https://www.instagram.com/daydreams.of.a.mad.king" target="_blank" rel="noopener">Instagram <span>@daydreams.of.a.mad.king</span></a></li>
+          <li><a href="https://www.facebook.com/daydreams.of.a.mad.king/" target="_blank" rel="noopener">Facebook <span>daydreams.of.a.mad.king</span></a></li>
+          <li><a href="https://www.tiktok.com/@daydreams.of.a.mad.king" target="_blank" rel="noopener">TikTok <span>@daydreams.of.a.mad.king</span></a></li>
+          <li><a href="https://www.youtube.com/channel/UCJj4eGcGGL8Bsy0d2TF2lqg" target="_blank" rel="noopener">YouTube <span>Clips & live</span></a></li>
+          <li><a href="https://open.spotify.com/artist/6qt9lMSReJ0amNUNCEISMu" target="_blank" rel="noopener">Spotify <span>Daydreams of a Mad King</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap" style="border-top:1px solid var(--line)">
+  <img src="img/emblem.png" alt="">
+  <span class="label">© DMK · Daydreams of a Mad King · Bordeaux</span>
+</div></footer>
+
+<script>
+(function(){
+  // Concert list: add a line here for each new date. Past dates disappear on their own.
+  var shows = [
+    {date:"2026-11-26", venue:"Le Steady", city:"Saint-Loubès", with:"Avec RAKKAM", meta:"21 h · 5 €"},
+    {date:"2026-12-12", venue:"Little O’Clock", city:"Toulouse", with:"Avec Madchamb et un autre groupe", meta:"Horaire à venir"}
+  ];
+  var months=["janv.","févr.","mars","avril","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+  var now=new Date(); now.setHours(0,0,0,0);
+  var upcoming=shows.filter(function(s){return new Date(s.date+"T23:59:00")>=now;})
+                    .sort(function(a,b){return a.date<b.date?-1:1;});
+  function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML;}
+  var list=document.getElementById("dateList");
+  if(!upcoming.length){
+    list.innerHTML='<li class="date"><time></time><div><h3>Nouvelles dates bientôt</h3><p>Suivez-nous sur Instagram pour les annonces.</p></div></li>';
+  } else {
+    list.innerHTML=upcoming.map(function(s){
+      var d=new Date(s.date+"T12:00:00");
+      return '<li class="date"><time datetime="'+s.date+'"><b>'+d.getDate()+'</b><span>'+months[d.getMonth()]+' '+d.getFullYear()+'</span></time>'+
+        '<div><h3>'+esc(s.venue)+' · '+esc(s.city)+'</h3><p>'+esc(s.with)+'</p></div><span class="meta">'+esc(s.meta)+'</span></li>';
+    }).join("");
+  }
+  var next=document.getElementById("next");
+  if(upcoming.length){
+    var n=upcoming[0], d=new Date(n.date+"T12:00:00");
+    var days=Math.round((new Date(n.date+"T00:00:00")-now)/864e5);
+    var when=days===0?"Ce soir":days===1?"Demain":"Dans "+days+" jours";
+    next.innerHTML='<div class="day">'+d.getDate()+'<small>'+months[d.getMonth()]+'</small></div>'+
+      '<div><span class="label">Prochain concert · '+when+'</span><strong>'+esc(n.venue)+', '+esc(n.city)+'</strong><p>'+esc(n.with)+' · '+esc(n.meta)+'</p></div>';
+  } else { next.hidden=true; }
+
+  // Player: one shared audio element for the three tracks.
+  var audio=document.getElementById("audio"), rows=[].slice.call(document.querySelectorAll("#player li")), current=null;
+  function fmt(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
+  function total(li){return +li.dataset.dur;}
+  function reset(li){li.classList.remove("playing");li.querySelector(".time").textContent=fmt(total(li));}
+  rows.forEach(function(li){
+    var seek=li.querySelector(".seek");
+    li.querySelector(".play").addEventListener("click",function(){
+      if(current===li){ if(audio.paused){audio.play();} else {audio.pause();} return; }
+      if(current){ reset(current); current.querySelector(".seek").value=0; }
+      current=li; audio.src=li.dataset.src; audio.currentTime=0;
+      audio.play().catch(function(){ reset(li); });
+    });
+    seek.addEventListener("input",function(){
+      if(current!==li){ return; }
+      audio.currentTime=+seek.value;
+    });
+  });
+  audio.addEventListener("play",function(){ if(current) current.classList.add("playing"); });
+  audio.addEventListener("pause",function(){ if(current) current.classList.remove("playing"); });
+  audio.addEventListener("timeupdate",function(){
+    if(!current) return;
+    current.querySelector(".seek").value=Math.floor(audio.currentTime);
+    current.querySelector(".time").textContent=fmt(audio.currentTime)+" / "+fmt(total(current));
+  });
+  audio.addEventListener("ended",function(){
+    var i=rows.indexOf(current); reset(current); current.querySelector(".seek").value=0;
+    var nxt=rows[i+1]; current=null;
+    if(nxt) nxt.querySelector(".play").click();
+  });
+
+  var btn=document.getElementById("copy"), mail=document.getElementById("mail");
+  btn.addEventListener("click",function(){
+    function selectIt(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Adresse sélectionnée";}
+    try{ navigator.clipboard.writeText(mail.textContent).then(function(){btn.textContent="Adresse copiée";},selectIt); }
+    catch(e){ selectIt(); }
+  });
+})();
+</script>
+
+</body>
+</html>
