@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <title>Daydreams of a Mad King</title>
-<meta name="description" content="Daydreams of a Mad King (DMK), groupe de rock alternatif de Bordeaux. Dates de concerts, titres, maquettes et contact booking.">
+<meta name="description" content="Daydreams of a Mad King (DMK), groupe de rock alternatif de Bordeaux. Dates de concerts, titres, photos et contact booking.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Archivo:ital,wght@0,400;0,500;0,600;1,400&display=swap">
@@ -100,15 +100,17 @@ section{padding-block:4rem;border-bottom:1px solid var(--line);scroll-margin-top
 .tracks .tag.out{color:var(--accent)}
 .note{color:var(--muted);font-size:.95rem;margin:.9rem 0 0;max-width:60ch}
 .player{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.player li{display:grid;grid-template-columns:3.2rem 1fr auto;gap:1rem;align-items:center;padding-block:1rem;border-bottom:1px solid var(--line)}
-.play{width:3.2rem;height:3.2rem;border-radius:50%;border:2px solid var(--fg);background:none;color:var(--fg);display:grid;place-items:center;cursor:pointer;padding:0}
-.play svg{width:1.1rem;height:1.1rem;fill:currentColor}
+.player li{display:grid;grid-template-columns:5rem 1fr auto;gap:1rem;align-items:center;padding-block:1rem;border-bottom:1px solid var(--line)}
+.play{position:relative;width:5rem;height:5rem;border:0;background:var(--surface);color:var(--fg);display:grid;place-items:center;cursor:pointer;padding:0;overflow:hidden}
+.play .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.play .ic{position:relative;width:2.3rem;height:2.3rem;border-radius:50%;background:rgba(18,17,16,.72);border:2px solid var(--fg);display:grid;place-items:center}
+.play svg{width:.95rem;height:.95rem;fill:currentColor}
 .play .i-pause{display:none}
-li.playing .play{background:var(--accent);border-color:var(--accent);color:#120f10}
+li.playing .play .ic{background:var(--accent);border-color:var(--accent);color:#120f10}
 li.playing .play .i-play{display:none}
 li.playing .play .i-pause{display:inline}
-.play:hover{border-color:var(--accent);color:var(--accent)}
-li.playing .play:hover{color:#120f10}
+.play:hover .ic{border-color:var(--accent);color:var(--accent)}
+li.playing .play:hover .ic{color:#120f10}
 .info{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem;min-width:0}
 .info .name{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:1.6rem;line-height:1.05;letter-spacing:.02em}
 .info .tag{font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.85rem;color:var(--muted)}
@@ -129,7 +131,8 @@ li.playing .time{color:var(--fg)}
 .lineup div{padding:1rem 1rem 1rem 0;border-bottom:1px solid var(--line)}
 .lineup strong{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:2rem;line-height:1}
 .shows{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1.5rem;margin-top:3rem}
-.shows article{border-top:3px solid var(--accent);padding-top:.9rem}
+.shows article{border-top:3px solid var(--accent);padding-top:.9rem;min-width:0}
+.shows img{width:100%;height:auto;aspect-ratio:496/700;object-fit:cover;margin-bottom:.9rem;background:var(--surface)}
 .shows h3{font-family:var(--display);text-transform:uppercase;font-weight:800;font-size:1.5rem;letter-spacing:.03em}
 .shows p{margin:.3rem 0 0;color:var(--muted);font-size:.97rem}
 
@@ -204,7 +207,7 @@ footer img{width:6rem;height:auto;opacity:.9}
 <header class="hero" id="top">
   <div class="top"><div class="wrap">
     <img src="img/emblem.png" alt="DMK">
-    <div class="topnav"><nav aria-label="Sections"><a href="#dates">Dates</a><a href="#ecouter">Play</a><a href="#groupe">Bio</a><a href="#photos">Shots</a><a href="#contact">Book</a></nav><div class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" lang="fr">FR</button><button type="button" data-lang="en" lang="en">EN</button></div></div>
+    <div class="topnav"><nav aria-label="Sections"><a href="#dates">Dates</a><a href="#ecouter">Écoute</a><a href="#groupe">Bio</a><a href="#photos">Photos</a><a href="#contact">Booking</a></nav><div class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" lang="fr">FR</button><button type="button" data-lang="en" lang="en">EN</button></div></div>
   </div></div>
   <img class="hero-photo" src="img/groupe-2.jpg" alt="Les membres de DMK devant un mur de graffitis">
   <div class="hero-text"><div class="wrap">
@@ -228,27 +231,27 @@ footer img{width:6rem;height:auto;opacity:.9}
       <ol class="dates" id="dateList"></ol>
       <div class="past">
         <span class="label">Ils nous ont déjà accueillis</span>
-        <p>Le Steady, Le Salem, V and B, Le Dropkick, L’Antidote, Shop Suey, Fête de la musique au parc de Fontaudin (Pessac) et sur les remparts de Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Les Aganit’s, Kick Off Day.</p>
+        <p>Le Steady, Le Salem, VandB, Le Dropkick, L’Antidote, Shop Suey, Fête de la musique au parc de Fontaudin (Pessac) et sur les remparts de Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Festival des Aganit’s, Kick Off Day, Clos de la Marina, Wolves Riders, Black Cat, Le Fiacre, L’Axis, Festival Izon fait du Bruit, Lembarzique, L’Arcadien.</p>
       </div>
     </section>
 
     <section id="ecouter">
-      <div class="sec-head"><h2>Play It Loud</h2><span class="label">3 titres · à écouter ici</span></div>
+      <div class="sec-head"><h2>Montez le son</h2><span class="label">3 titres · à écouter ici</span></div>
       <ol class="player" id="player">
         <li data-src="audio/day-in-hell.mp3" data-dur="497">
-          <button class="play" type="button" aria-label="Lire Day in Hell"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></button>
+          <button class="play" type="button" aria-label="Lire Day in Hell"><img class="cover" src="img/covers/day-in-hell.jpg" alt="" width="200" height="200"><span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></span></button>
           <div class="info"><span class="name">Day in Hell</span><span class="tag out">Premier single</span>
             <input class="seek" type="range" min="0" max="497" step="1" value="0" aria-label="Position dans Day in Hell" id="seek-1"></div>
           <span class="time">8:17</span>
         </li>
         <li data-src="audio/the-party.mp3" data-dur="338">
-          <button class="play" type="button" aria-label="Lire The Party"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></button>
+          <button class="play" type="button" aria-label="Lire The Party"><img class="cover" src="img/covers/the-party.jpg" alt="" width="200" height="200"><span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></span></button>
           <div class="info"><span class="name">The Party</span><span class="tag out">Deuxième single</span>
             <input class="seek" type="range" min="0" max="338" step="1" value="0" aria-label="Position dans The Party" id="seek-2"></div>
           <span class="time">5:38</span>
         </li>
         <li data-src="audio/lost-in-my-head-acoustic.mp3" data-dur="419">
-          <button class="play" type="button" aria-label="Lire Lost in My Head, version acoustique"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></button>
+          <button class="play" type="button" aria-label="Lire Lost in My Head, version acoustique"><img class="cover" src="img/covers/lost-in-my-head-acoustic.jpg" alt="" width="200" height="200"><span class="ic"><svg viewBox="0 0 20 20" aria-hidden="true"><path class="i-play" d="M5 3l12 7-12 7z"/><path class="i-pause" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg></span></button>
           <div class="info"><span class="name">Lost in My Head</span><span class="tag">Bonus · version acoustique</span>
             <input class="seek" type="range" min="0" max="419" step="1" value="0" aria-label="Position dans Lost in My Head" id="seek-3"></div>
           <span class="time">6:59</span>
@@ -263,7 +266,7 @@ footer img{width:6rem;height:auto;opacity:.9}
     </section>
 
     <section id="groupe">
-      <div class="sec-head"><h2>Meet the Mad King</h2><span class="label">Bordeaux · depuis 2023</span></div>
+      <div class="sec-head"><h2>Le Roi fou et sa cour</h2><span class="label">Bordeaux · depuis 2023</span></div>
       <div class="band">
         <figure><img src="img/groupe-portrait.jpg" alt="Portrait du groupe DMK sous un hangar" loading="lazy"></figure>
         <div>
@@ -278,9 +281,9 @@ footer img{width:6rem;height:auto;opacity:.9}
         </div>
       </div>
       <div class="shows">
-        <article><h3>Main Show</h3><p>Le set électrique complet, compos originales.</p></article>
-        <article><h3>Unplugged Experience</h3><p>Nos morceaux revisités en acoustique.</p></article>
-        <article><h3>Acoustic Covers</h3><p>Classiques rock et métal en version acoustique. Plus de 4 h de set au total.</p></article>
+        <article><img src="img/shows/main-show.jpg" alt="Affiche du Main Show : Les Paul et grosse caisse au logo DMK" loading="lazy" width="496" height="700"><h3>Main Show</h3><p>Le set électrique complet, compos originales.</p></article>
+        <article><img src="img/shows/unplugged.jpg" alt="Affiche Unplugged : guitare acoustique 12 cordes devant un flight case" loading="lazy" width="496" height="700"><h3>Unplugged Experience</h3><p>Nos morceaux revisités en acoustique.</p></article>
+        <article><img src="img/shows/acoustic-covers.jpg" alt="Affiche Acoustic Metal Covers : logos des groupes repris" loading="lazy" width="496" height="700"><h3>Acoustic Metal Covers</h3><p>Classiques rock et métal en version acoustique. Plus de 4 h de set au total.</p></article>
       </div>
     </section>
   </div>
@@ -292,7 +295,7 @@ footer img{width:6rem;height:auto;opacity:.9}
 
   <div class="wrap">
     <section id="photos">
-      <div class="sec-head"><h2>Caught in the Act</h2><span class="label">Promo 2025</span></div>
+      <div class="sec-head"><h2>Pris sur le vif</h2><span class="label">Promo 2025</span></div>
       <ul class="gallery" id="gallery">
         <li class="ph feat"><button type="button" data-full="img/promo-2025/01.jpg" aria-label="Agrandir : Les deux guitaristes, tête en arrière, en plein solo"><img src="img/promo-2025/01.jpg" alt="Les deux guitaristes, tête en arrière, en plein solo" loading="lazy" width="560" height="784"></button></li>
         <li class="ph"><button type="button" data-full="img/promo-2025/02.jpg" aria-label="Agrandir : Guitariste chanteur au chapeau melon dans la fumée"><img src="img/promo-2025/02-mini.jpg" alt="Guitariste chanteur au chapeau melon dans la fumée" loading="lazy" width="560" height="784"></button></li>
@@ -317,7 +320,7 @@ footer img{width:6rem;height:auto;opacity:.9}
 
   <div class="wrap">
     <section id="contact" style="border-bottom:0">
-      <div class="sec-head"><h2>Book the Madness</h2><span class="label">Booking · presse</span></div>
+      <div class="sec-head"><h2>Bookez la folie</h2><span class="label">Booking · presse</span></div>
       <div class="contact">
         <div>
           <span class="label">Écrivez-nous</span>
@@ -329,7 +332,7 @@ footer img{width:6rem;height:auto;opacity:.9}
           <li><a href="https://www.instagram.com/daydreams.of.a.mad.king" target="_blank" rel="noopener">Instagram <span>@daydreams.of.a.mad.king</span></a></li>
           <li><a href="https://www.facebook.com/daydreams.of.a.mad.king/" target="_blank" rel="noopener">Facebook <span>daydreams.of.a.mad.king</span></a></li>
           <li><a href="https://www.tiktok.com/@daydreams.of.a.mad.king" target="_blank" rel="noopener">TikTok <span>@daydreams.of.a.mad.king</span></a></li>
-          <li><a href="https://www.youtube.com/channel/UCJj4eGcGGL8Bsy0d2TF2lqg" target="_blank" rel="noopener">YouTube <span>Clips & live</span></a></li>
+          <li><a href="https://www.youtube.com/channel/UCJj4eGcGGL8Bsy0d2TF2lqg" target="_blank" rel="noopener">YouTube <span>Clips et live</span></a></li>
           <li><a href="https://open.spotify.com/artist/6qt9lMSReJ0amNUNCEISMu" target="_blank" rel="noopener">Spotify <span>Daydreams of a Mad King</span></a></li>
         </ul>
       </div>
@@ -365,10 +368,10 @@ footer img{width:6rem;height:auto;opacity:.9}
   var T={
     fr:{months:["janv.","févr.","mars","avril","mai","juin","juil.","août","sept.","oct.","nov.","déc."],none:"Nouvelles dates bientôt",noneSub:"Suivez-nous sur Instagram pour les annonces.",
         next:"Prochain concert",tonight:"Ce soir",tomorrow:"Demain",inDays:function(n){return "Dans "+n+" jours";},copied:"Adresse copiée",selected:"Adresse sélectionnée",
-        play:"Lire ",seek:"Position dans ",zoom:"Agrandir : ",desc:"Daydreams of a Mad King (DMK), groupe de rock alternatif de Bordeaux. Dates de concerts, titres, maquettes et contact booking."},
+        play:"Lire ",seek:"Position dans ",zoom:"Agrandir : ",desc:"Daydreams of a Mad King (DMK), groupe de rock alternatif de Bordeaux. Dates de concerts, titres, photos et contact booking."},
     en:{months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],none:"New dates coming soon",noneSub:"Follow us on Instagram for announcements.",
         next:"Next show",tonight:"Tonight",tomorrow:"Tomorrow",inDays:function(n){return "In "+n+" days";},copied:"Address copied",selected:"Address selected",
-        play:"Play ",seek:"Position in ",zoom:"Enlarge: ",desc:"Daydreams of a Mad King (DMK), alternative rock band from Bordeaux, France. Show dates, tracks and booking contact."}
+        play:"Play ",seek:"Position in ",zoom:"Enlarge: ",desc:"Daydreams of a Mad King (DMK), alternative rock band from Bordeaux, France. Show dates, tracks, photos and booking contact."}
   };
   var lang="fr";
   var now=new Date(); now.setHours(0,0,0,0);
@@ -460,8 +463,8 @@ footer img{width:6rem;height:auto;opacity:.9}
     try{ navigator.clipboard.writeText(mail.textContent).then(function(){btn.textContent=T[lang].copied;},selectIt); }
     catch(e){ selectIt(); }
   });
-  // Language switch: French is written in the page, English comes from this table.
-  var EN={"Rock alternatif · Bordeaux": "Alternative rock · Bordeaux", "Écouter sur Spotify": "Listen on Spotify", "Toutes les dates": "All dates", "Saison 2026": "2026 season", "Ils nous ont déjà accueillis": "Venues we’ve played", "Le Steady, Le Salem, V and B, Le Dropkick, L’Antidote, Shop Suey, Fête de la musique au parc de Fontaudin (Pessac) et sur les remparts de Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Les Aganit’s, Kick Off Day.": "Le Steady, Le Salem, V and B, Le Dropkick, L’Antidote, Shop Suey, Fête de la Musique at Parc de Fontaudin (Pessac) and on the ramparts of Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Les Aganit’s, Kick Off Day.", "3 titres · à écouter ici": "3 tracks · listen here", "Premier single": "First single", "Deuxième single": "Second single", "Bonus · version acoustique": "Bonus · acoustic version", "Bordeaux · depuis 2023": "Bordeaux · since 2023", "Taillé pour le live.": "Born to play live.", "On vous attend devant la scène.": "See you in front of the stage.", "Daydreams of a Mad King (DMK), c’est du rock alternatif, du métal avec des touches de blues, de funk, d’indus et de prog : des ambiances changeantes, des mélodies qui restent en tête, et des morceaux qui montent en tension pour raconter des histoires.": "Daydreams of a Mad King (DMK) is alternative rock and metal with touches of blues, funk, industrial and prog: shifting moods, melodies that stick, and songs that build up tension to tell stories.", "Avec deux guitares, une batterie, un son lourd et une voix singulière, le trio bordelais est taillé pour le live : un set direct, sans artifice, où on joue ensemble et fort.": "With two guitars, drums, a heavy sound and a singular voice, the Bordeaux trio is built for the stage: a direct, no-frills set where we play together, and loud.", "Chant & guitare": "Vocals & guitar", "Guitare": "Guitar", "Batterie": "Drums", "Le set électrique complet, compos originales.": "The full electric set, all original songs.", "Nos morceaux revisités en acoustique.": "Our songs, reworked acoustic.", "Classiques rock et métal en version acoustique. Plus de 4 h de set au total.": "Rock and metal classics, played acoustic. Over 4 hours of music in total.", "Booking · presse": "Booking · press", "Écrivez-nous": "Write to us", "Copier l’adresse": "Copy address", "Production : PYKO PROD, Bordeaux.": "Production: PYKO PROD, Bordeaux.", "Les membres de DMK devant un mur de graffitis": "DMK in front of a graffiti wall", "Portrait du groupe DMK sous un hangar": "DMK band portrait under a shed roof", "DMK, séance photo 2026": "DMK, 2026 photo shoot", "Photo agrandie": "Enlarged photo", "Fermer": "Close", "Photo précédente": "Previous photo", "Photo suivante": "Next photo", "Lost in My Head, version acoustique": "Lost in My Head, acoustic version", "Les deux guitaristes, tête en arrière, en plein solo": "The two guitarists, heads thrown back, mid-solo", "Guitariste chanteur au chapeau melon dans la fumée": "Singer-guitarist in a bowler hat, in the smoke", "Batteur concentré en concert": "Drummer focused on stage", "Portrait d'un guitariste avec une Jackson en V": "Portrait of a guitarist with a Jackson V", "Chanteur au micro avec sa Les Paul au logo DMK": "Singer at the mic with his DMK Les Paul", "Batteur accoudé à la grosse caisse au logo DMK": "Drummer leaning on the DMK bass drum", "Les deux guitaristes face à face sur scène": "The two guitarists face to face on stage", "Guitariste chanteur sous les projecteurs, dans la fumée": "Singer-guitarist under the lights, in the smoke", "Guitariste en contre-plongée avec une guitare en V": "Low-angle shot of a guitarist with a V guitar", "Guitariste assis, sa Les Paul au logo DMK à la main": "Seated guitarist holding his DMK Les Paul", "Batteur devant la bannière du roi fou": "Drummer in front of the Mad King banner", "Guitariste à genoux sous un faisceau de lumière": "Guitarist on his knees in a spotlight", "Guitariste en contre-plongée, batteur en arrière-plan": "Low-angle shot of a guitarist, drummer behind", "Guitariste assis tenant une Gibson Les Paul au logo DMK": "Seated guitarist holding a DMK Gibson Les Paul", "Chanteur guitariste en pleine voix dans la fumée": "Singer-guitarist in full voice, in the smoke", "Chanteur au micro, chapeau sur la tête": "Singer at the mic, hat on", "Mains sur le manche d'une guitare en V": "Hands on the neck of a V guitar", "Sections": "Sections", "Retour en haut": "Back to top"};
+  // Language switch: French is written in the page, English comes from this table.  var EN={"Rock alternatif · Bordeaux": "Alternative rock · Bordeaux", "Écouter sur Spotify": "Listen on Spotify", "Toutes les dates": "All dates", "Saison 2026": "2026 season", "Ils nous ont déjà accueillis": "Venues we’ve played", "3 titres · à écouter ici": "3 tracks · listen here", "Premier single": "First single", "Deuxième single": "Second single", "Bonus · version acoustique": "Bonus · acoustic version", "Bordeaux · depuis 2023": "Bordeaux · since 2023", "Taillé pour le live.": "Born to play live.", "On vous attend devant la scène.": "See you in front of the stage.", "Daydreams of a Mad King (DMK), c’est du rock alternatif, du métal avec des touches de blues, de funk, d’indus et de prog : des ambiances changeantes, des mélodies qui restent en tête, et des morceaux qui montent en tension pour raconter des histoires.": "Daydreams of a Mad King (DMK) is alternative rock and metal with touches of blues, funk, industrial and prog: shifting moods, melodies that stick, and songs that build up tension to tell stories.", "Avec deux guitares, une batterie, un son lourd et une voix singulière, le trio bordelais est taillé pour le live : un set direct, sans artifice, où on joue ensemble et fort.": "With two guitars, drums, a heavy sound and a singular voice, the Bordeaux trio is built for the stage: a direct, no-frills set where we play together, and loud.", "Chant & guitare": "Vocals & guitar", "Guitare": "Guitar", "Batterie": "Drums", "Le set électrique complet, compos originales.": "The full electric set, all original songs.", "Nos morceaux revisités en acoustique.": "Our songs, reworked acoustic.", "Classiques rock et métal en version acoustique. Plus de 4 h de set au total.": "Rock and metal classics, played acoustic. Over 4 hours of music in total.", "Booking · presse": "Booking · press", "Écrivez-nous": "Write to us", "Copier l’adresse": "Copy address", "Production : PYKO PROD, Bordeaux.": "Production: PYKO PROD, Bordeaux.", "Les membres de DMK devant un mur de graffitis": "DMK in front of a graffiti wall", "Portrait du groupe DMK sous un hangar": "DMK band portrait under a shed roof", "DMK, séance photo 2026": "DMK, 2026 photo shoot", "Photo agrandie": "Enlarged photo", "Fermer": "Close", "Photo précédente": "Previous photo", "Photo suivante": "Next photo", "Lost in My Head, version acoustique": "Lost in My Head, acoustic version", "Les deux guitaristes, tête en arrière, en plein solo": "The two guitarists, heads thrown back, mid-solo", "Guitariste chanteur au chapeau melon dans la fumée": "Singer-guitarist in a bowler hat, in the smoke", "Batteur concentré en concert": "Drummer focused on stage", "Portrait d'un guitariste avec une Jackson en V": "Portrait of a guitarist with a Jackson V", "Chanteur au micro avec sa Les Paul au logo DMK": "Singer at the mic with his DMK Les Paul", "Batteur accoudé à la grosse caisse au logo DMK": "Drummer leaning on the DMK bass drum", "Les deux guitaristes face à face sur scène": "The two guitarists face to face on stage", "Guitariste chanteur sous les projecteurs, dans la fumée": "Singer-guitarist under the lights, in the smoke", "Guitariste en contre-plongée avec une guitare en V": "Low-angle shot of a guitarist with a V guitar", "Guitariste assis, sa Les Paul au logo DMK à la main": "Seated guitarist holding his DMK Les Paul", "Batteur devant la bannière du roi fou": "Drummer in front of the Mad King banner", "Guitariste à genoux sous un faisceau de lumière": "Guitarist on his knees in a spotlight", "Guitariste en contre-plongée, batteur en arrière-plan": "Low-angle shot of a guitarist, drummer behind", "Guitariste assis tenant une Gibson Les Paul au logo DMK": "Seated guitarist holding a DMK Gibson Les Paul", "Chanteur guitariste en pleine voix dans la fumée": "Singer-guitarist in full voice, in the smoke", "Chanteur au micro, chapeau sur la tête": "Singer at the mic, hat on", "Mains sur le manche d'une guitare en V": "Hands on the neck of a V guitar", "Sections": "Sections", "Retour en haut": "Back to top", "Montez le son": "Play It Loud", "Le Roi fou et sa cour": "Meet the Mad King", "Pris sur le vif": "Caught in the Act", "Bookez la folie": "Book the Madness", "Écoute": "Play", "Photos": "Shots", "Booking": "Book", "Le Steady, Le Salem, VandB, Le Dropkick, L’Antidote, Shop Suey, Fête de la musique au parc de Fontaudin (Pessac) et sur les remparts de Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Festival des Aganit’s, Kick Off Day, Clos de la Marina, Wolves Riders, Black Cat, Le Fiacre, L’Axis, Festival Izon fait du Bruit, Lembarzique, L’Arcadien.": "Le Steady, Le Salem, VandB, Le Dropkick, L’Antidote, Shop Suey, Fête de la Musique at Parc de Fontaudin (Pessac) and on the ramparts of Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Festival des Aganit’s, Kick Off Day, Clos de la Marina, Wolves Riders, Black Cat, Le Fiacre, L’Axis, Festival Izon fait du Bruit, Lembarzique, L’Arcadien.", "Affiche du Main Show : Les Paul et grosse caisse au logo DMK": "Main Show poster: DMK Les Paul and bass drum", "Affiche Unplugged : guitare acoustique 12 cordes devant un flight case": "Unplugged poster: 12-string acoustic guitar in front of a flight case", "Affiche Acoustic Metal Covers : logos des groupes repris": "Acoustic Metal Covers poster: logos of the bands we cover", "Photos du groupe": "Band photos", "Clips et live": "Clips & live"};
+
   var textNodes=[], walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
     var p=n.parentNode.nodeName; if(p==="SCRIPT"||p==="STYLE") return NodeFilter.FILTER_REJECT;
     return EN[n.nodeValue.trim()]?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP; }});
