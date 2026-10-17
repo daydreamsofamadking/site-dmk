@@ -146,6 +146,28 @@ li.playing .time{color:var(--fg)}
 footer .wrap{padding-block:3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
 footer img{width:6rem;height:auto;opacity:.9}
 
+/* photo gallery */
+.gallery{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);grid-auto-flow:dense;gap:6px}
+@media (min-width:700px){.gallery{grid-template-columns:repeat(4,1fr)}}
+.ph button{display:block;width:100%;height:100%;padding:0;border:0;background:var(--surface);cursor:zoom-in;overflow:hidden}
+.ph img{width:100%;height:auto;aspect-ratio:5/7;object-fit:cover;transition:transform .35s ease,filter .35s ease}
+.ph.feat{grid-column:span 2;grid-row:span 2}
+.ph.feat img{height:100%;aspect-ratio:auto}
+.ph button:hover img{transform:scale(1.03)}
+.ph button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,9,8,.94);display:grid;place-items:center;
+  padding:max(3.5rem,env(safe-area-inset-top,0px)) max(3.5rem,env(safe-area-inset-right,0px)) max(3.5rem,env(safe-area-inset-bottom,0px)) max(3.5rem,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 10px 50px rgba(0,0,0,.6)}
+.lb-btn{position:absolute;width:2.9rem;height:2.9rem;border-radius:50%;border:2px solid var(--fg);background:rgba(18,17,16,.6);color:var(--fg);display:grid;place-items:center;cursor:pointer;padding:0}
+.lb-btn svg{width:1.05rem;height:1.05rem;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.lb-btn:hover{border-color:var(--accent);color:var(--accent)}
+.lb-close{top:calc(.8rem + env(safe-area-inset-top,0px));right:calc(.8rem + env(safe-area-inset-right,0px))}
+.lb-prev{left:calc(.6rem + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb-next{right:calc(.6rem + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+.lb-count{position:absolute;bottom:calc(1rem + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font-family:var(--display);font-weight:800;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:560px){.lb{padding-left:max(.5rem,env(safe-area-inset-left,0px));padding-right:max(.5rem,env(safe-area-inset-right,0px))}.lb-prev,.lb-next{top:auto;bottom:calc(.4rem + env(safe-area-inset-bottom,0px));transform:none}}
+@media (prefers-reduced-motion:reduce){.ph img{transition:none}.ph button:hover img{transform:none}}
+
 @media (max-width:560px){
   .date{grid-template-columns:4.6rem 1fr}
   .date .meta{grid-column:2;text-align:left}
@@ -164,7 +186,7 @@ footer img{width:6rem;height:auto;opacity:.9}
 <header class="hero">
   <div class="top"><div class="wrap">
     <img src="img/emblem.png" alt="DMK">
-    <nav aria-label="Sections"><a href="#dates">Dates</a><a href="#ecouter">Écouter</a><a href="#groupe">Le groupe</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Sections"><a href="#dates">Dates</a><a href="#ecouter">Écouter</a><a href="#groupe">Le groupe</a><a href="#photos">Photos</a><a href="#contact">Contact</a></nav>
   </div></div>
   <img class="hero-photo" src="img/groupe-2.jpg" alt="Les membres de DMK devant un mur de graffitis">
   <div class="hero-text"><div class="wrap">
@@ -251,6 +273,31 @@ footer img{width:6rem;height:auto;opacity:.9}
   </div>
 
   <div class="wrap">
+    <section id="photos">
+      <div class="sec-head"><h2>Photos</h2><span class="label">Promo 2025</span></div>
+      <ul class="gallery" id="gallery">
+        <li class="ph feat"><button type="button" data-full="img/promo-2025/01.jpg" aria-label="Agrandir : Les deux guitaristes, tête en arrière, en plein solo"><img src="img/promo-2025/01.jpg" alt="Les deux guitaristes, tête en arrière, en plein solo" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/02.jpg" aria-label="Agrandir : Guitariste chanteur au chapeau melon dans la fumée"><img src="img/promo-2025/02-mini.jpg" alt="Guitariste chanteur au chapeau melon dans la fumée" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/03.jpg" aria-label="Agrandir : Batteur concentré en concert"><img src="img/promo-2025/03-mini.jpg" alt="Batteur concentré en concert" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/04.jpg" aria-label="Agrandir : Portrait d'un guitariste avec une Jackson en V"><img src="img/promo-2025/04-mini.jpg" alt="Portrait d'un guitariste avec une Jackson en V" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/05.jpg" aria-label="Agrandir : Chanteur au micro avec sa Les Paul au logo DMK"><img src="img/promo-2025/05-mini.jpg" alt="Chanteur au micro avec sa Les Paul au logo DMK" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/06.jpg" aria-label="Agrandir : Batteur accoudé à la grosse caisse au logo DMK"><img src="img/promo-2025/06-mini.jpg" alt="Batteur accoudé à la grosse caisse au logo DMK" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/07.jpg" aria-label="Agrandir : Les deux guitaristes face à face sur scène"><img src="img/promo-2025/07-mini.jpg" alt="Les deux guitaristes face à face sur scène" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/08.jpg" aria-label="Agrandir : Guitariste chanteur sous les projecteurs, dans la fumée"><img src="img/promo-2025/08-mini.jpg" alt="Guitariste chanteur sous les projecteurs, dans la fumée" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/09.jpg" aria-label="Agrandir : Guitariste en contre-plongée avec une guitare en V"><img src="img/promo-2025/09-mini.jpg" alt="Guitariste en contre-plongée avec une guitare en V" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/10.jpg" aria-label="Agrandir : Guitariste assis, sa Les Paul au logo DMK à la main"><img src="img/promo-2025/10-mini.jpg" alt="Guitariste assis, sa Les Paul au logo DMK à la main" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/11.jpg" aria-label="Agrandir : Batteur devant la bannière du roi fou"><img src="img/promo-2025/11-mini.jpg" alt="Batteur devant la bannière du roi fou" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/12.jpg" aria-label="Agrandir : Guitariste à genoux sous un faisceau de lumière"><img src="img/promo-2025/12-mini.jpg" alt="Guitariste à genoux sous un faisceau de lumière" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/13.jpg" aria-label="Agrandir : Guitariste en contre-plongée, batteur en arrière-plan"><img src="img/promo-2025/13-mini.jpg" alt="Guitariste en contre-plongée, batteur en arrière-plan" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/14.jpg" aria-label="Agrandir : Guitariste assis tenant une Gibson Les Paul au logo DMK"><img src="img/promo-2025/14-mini.jpg" alt="Guitariste assis tenant une Gibson Les Paul au logo DMK" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/15.jpg" aria-label="Agrandir : Chanteur guitariste en pleine voix dans la fumée"><img src="img/promo-2025/15-mini.jpg" alt="Chanteur guitariste en pleine voix dans la fumée" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/16.jpg" aria-label="Agrandir : Chanteur au micro, chapeau sur la tête"><img src="img/promo-2025/16-mini.jpg" alt="Chanteur au micro, chapeau sur la tête" loading="lazy" width="560" height="784"></button></li>
+        <li class="ph"><button type="button" data-full="img/promo-2025/17.jpg" aria-label="Agrandir : Mains sur le manche d'une guitare en V"><img src="img/promo-2025/17-mini.jpg" alt="Mains sur le manche d'une guitare en V" loading="lazy" width="560" height="784"></button></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="wrap">
     <section id="contact" style="border-bottom:0">
       <div class="sec-head"><h2>Contact</h2><span class="label">Booking · presse</span></div>
       <div class="contact">
@@ -271,6 +318,16 @@ footer img{width:6rem;height:auto;opacity:.9}
     </section>
   </div>
 </main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo agrandie" hidden>
+  <img id="lb-img" alt="">
+  <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Fermer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
+  <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Photo précédente"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M13 3l-7 7 7 7"/></svg></button>
+  <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Photo suivante"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3l7 7-7 7"/></svg></button>
+  <span class="lb-count" id="lb-count"></span>
+</div>
+
+
 
 <footer><div class="wrap" style="border-top:1px solid var(--line)">
   <img src="img/emblem.png" alt="">
@@ -337,6 +394,35 @@ footer img{width:6rem;height:auto;opacity:.9}
     var i=rows.indexOf(current); reset(current); current.querySelector(".seek").value=0;
     var nxt=rows[i+1]; current=null;
     if(nxt) nxt.querySelector(".play").click();
+  });
+
+  // Photo gallery lightbox
+  var shots=[].slice.call(document.querySelectorAll("#gallery button")), lb=document.getElementById("lb"), lbImg=document.getElementById("lb-img"),
+      lbCount=document.getElementById("lb-count"), shown=0, opener=null, touchX=null;
+  function show(i){
+    shown=(i+shots.length)%shots.length;
+    var b=shots[shown], im=b.querySelector("img");
+    lbImg.src=b.dataset.full; lbImg.alt=im.alt;
+    lbCount.textContent=(shown+1)+" / "+shots.length;
+    [shown+1,shown-1].forEach(function(j){ var n=shots[(j+shots.length)%shots.length]; (new Image()).src=n.dataset.full; });
+  }
+  function openLb(i){ opener=shots[i]; show(i); lb.hidden=false; document.body.style.overflow="hidden"; document.getElementById("lb-close").focus(); }
+  function closeLb(){ lb.hidden=true; document.body.style.overflow=""; lbImg.removeAttribute("src"); if(opener) opener.focus(); }
+  shots.forEach(function(b,i){ b.addEventListener("click",function(){ openLb(i); }); });
+  document.getElementById("lb-close").addEventListener("click",closeLb);
+  document.getElementById("lb-prev").addEventListener("click",function(){ show(shown-1); });
+  document.getElementById("lb-next").addEventListener("click",function(){ show(shown+1); });
+  lb.addEventListener("click",function(e){ if(e.target===lb) closeLb(); });
+  document.addEventListener("keydown",function(e){
+    if(lb.hidden) return;
+    if(e.key==="Escape") closeLb();
+    else if(e.key==="ArrowLeft") show(shown-1);
+    else if(e.key==="ArrowRight") show(shown+1);
+  });
+  lb.addEventListener("touchstart",function(e){ touchX=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener("touchend",function(e){
+    if(touchX===null) return; var dx=e.changedTouches[0].clientX-touchX; touchX=null;
+    if(Math.abs(dx)>50) show(shown+(dx<0?1:-1));
   });
 
   var btn=document.getElementById("copy"), mail=document.getElementById("mail");
