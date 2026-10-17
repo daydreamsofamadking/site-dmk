@@ -139,7 +139,7 @@ li.playing .time{color:var(--fg)}
 
 /* contact */
 .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:2.5rem;align-items:start}
-.mail{font-family:var(--display);font-weight:800;font-size:clamp(1.15rem,4.2vw,1.8rem);letter-spacing:.01em;white-space:nowrap;user-select:all;margin:.3rem 0 1rem;display:block;line-height:1.1}
+.mail{font-family:var(--display);font-weight:800;font-size:min(1.8rem,calc((100vw - 2*max(16px,env(safe-area-inset-left,0px))) / 17));letter-spacing:.01em;white-space:nowrap;user-select:all;margin:.3rem 0 1rem;display:block;line-height:1.1}
 .socials{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .socials a{display:flex;justify-content:space-between;gap:1rem;padding-block:.75rem;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:1.1rem}
 .socials a span{color:var(--muted);text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:400;font-size:.92rem;text-align:right;min-width:0;overflow-wrap:anywhere}
@@ -166,6 +166,20 @@ footer img{width:6rem;height:auto;opacity:.9}
 .lb-prev{left:calc(.6rem + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
 .lb-next{right:calc(.6rem + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
 .lb-count{position:absolute;bottom:calc(1rem + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font-family:var(--display);font-weight:800;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+/* language switch + back to top */
+.topnav{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:.5rem 1.3rem}
+.lang{display:flex;border:1.5px solid var(--fg);border-radius:2px;background:rgba(18,17,16,.45)}
+.lang button{font-family:var(--display);font-weight:800;letter-spacing:.1em;font-size:.85rem;padding:.15rem .5rem;border:0;background:none;color:var(--fg);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.lang button:hover{color:var(--accent)}
+.lang button[aria-pressed="true"]:hover{color:var(--bg)}
+.totop{position:fixed;z-index:40;right:calc(1rem + env(safe-area-inset-right,0px));bottom:calc(1rem + env(safe-area-inset-bottom,0px));
+  width:3rem;height:3rem;border-radius:50%;background:var(--accent);color:#120f10;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.45);opacity:0;transform:translateY(.6rem);pointer-events:none}
+.totop.show{opacity:1;transform:none;pointer-events:auto}
+.totop svg{width:1.2rem;height:1.2rem;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.totop:hover{background:var(--fg)}
+@media (prefers-reduced-motion:no-preference){.totop{transition:opacity .25s,transform .25s,background .15s}html{scroll-behavior:smooth}}
+
 @media (max-width:560px){.lb{padding-left:max(.5rem,env(safe-area-inset-left,0px));padding-right:max(.5rem,env(safe-area-inset-right,0px))}.lb-prev,.lb-next{top:auto;bottom:calc(.4rem + env(safe-area-inset-bottom,0px));transform:none}}
 @media (prefers-reduced-motion:reduce){.ph img{transition:none}.ph button:hover img{transform:none}}
 
@@ -173,7 +187,10 @@ footer img{width:6rem;height:auto;opacity:.9}
   .date{grid-template-columns:4.6rem 1fr}
   .date .meta{grid-column:2;text-align:left}
   .top img{width:2.1rem}
-  nav a{font-size:.9rem;letter-spacing:.1em}
+  nav{gap:.3rem .85rem}
+  nav a{font-size:.88rem;letter-spacing:.06em}
+  .topnav{gap:.45rem .8rem}
+  .lang button{font-size:.78rem;padding:.1rem .4rem}
   .strip{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:no-preference){
@@ -184,10 +201,10 @@ footer img{width:6rem;height:auto;opacity:.9}
 <body>
 
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="top"><div class="wrap">
     <img src="img/emblem.png" alt="DMK">
-    <nav aria-label="Sections"><a href="#dates">Dates</a><a href="#ecouter">Play</a><a href="#groupe">Bio</a><a href="#photos">Shots</a><a href="#contact">Book</a></nav>
+    <div class="topnav"><nav aria-label="Sections"><a href="#dates">Dates</a><a href="#ecouter">Play</a><a href="#groupe">Bio</a><a href="#photos">Shots</a><a href="#contact">Book</a></nav><div class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" lang="fr">FR</button><button type="button" data-lang="en" lang="en">EN</button></div></div>
   </div></div>
   <img class="hero-photo" src="img/groupe-2.jpg" alt="Les membres de DMK devant un mur de graffitis">
   <div class="hero-text"><div class="wrap">
@@ -320,6 +337,8 @@ footer img{width:6rem;height:auto;opacity:.9}
   </div>
 </main>
 
+<a class="totop" id="totop" href="#top" aria-label="Retour en haut" hidden><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 12l6-6 6 6"/></svg></a>
+
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo agrandie" hidden>
   <img id="lb-img" alt="">
   <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Fermer"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
@@ -338,33 +357,42 @@ footer img{width:6rem;height:auto;opacity:.9}
 <script>
 (function(){
   // Concert list: add a line here for each new date. Past dates disappear on their own.
+  // with / meta = French text; with_en / meta_en = English text (optional, falls back to French).
   var shows = [
-    {date:"2026-11-26", venue:"Le Steady", city:"Saint-Loubès", with:"Avec RAKKAM", meta:"21 h · 5 €"},
-    {date:"2026-12-12", venue:"Little O’Clock", city:"Toulouse", with:"Avec Madchamb et un autre groupe", meta:"Horaire à venir"}
+    {date:"2026-11-26", venue:"Le Steady", city:"Saint-Loubès", with:"Avec RAKKAM", with_en:"With RAKKAM", meta:"21 h · 5 €", meta_en:"9 pm · €5"},
+    {date:"2026-12-12", venue:"Little O’Clock", city:"Toulouse", with:"Avec Madchamb et un autre groupe", with_en:"With Madchamb and one more band", meta:"Horaire à venir", meta_en:"Time TBA"}
   ];
-  var months=["janv.","févr.","mars","avril","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+  var T={
+    fr:{months:["janv.","févr.","mars","avril","mai","juin","juil.","août","sept.","oct.","nov.","déc."],none:"Nouvelles dates bientôt",noneSub:"Suivez-nous sur Instagram pour les annonces.",
+        next:"Prochain concert",tonight:"Ce soir",tomorrow:"Demain",inDays:function(n){return "Dans "+n+" jours";},copied:"Adresse copiée",selected:"Adresse sélectionnée",
+        play:"Lire ",seek:"Position dans ",zoom:"Agrandir : ",desc:"Daydreams of a Mad King (DMK), groupe de rock alternatif de Bordeaux. Dates de concerts, titres, maquettes et contact booking."},
+    en:{months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],none:"New dates coming soon",noneSub:"Follow us on Instagram for announcements.",
+        next:"Next show",tonight:"Tonight",tomorrow:"Tomorrow",inDays:function(n){return "In "+n+" days";},copied:"Address copied",selected:"Address selected",
+        play:"Play ",seek:"Position in ",zoom:"Enlarge: ",desc:"Daydreams of a Mad King (DMK), alternative rock band from Bordeaux, France. Show dates, tracks and booking contact."}
+  };
+  var lang="fr";
   var now=new Date(); now.setHours(0,0,0,0);
   var upcoming=shows.filter(function(s){return new Date(s.date+"T23:59:00")>=now;})
                     .sort(function(a,b){return a.date<b.date?-1:1;});
   function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML;}
-  var list=document.getElementById("dateList");
-  if(!upcoming.length){
-    list.innerHTML='<li class="date"><time></time><div><h3>Nouvelles dates bientôt</h3><p>Suivez-nous sur Instagram pour les annonces.</p></div></li>';
-  } else {
+  function pick(s,k){return (lang==="en"&&s[k+"_en"])?s[k+"_en"]:s[k];}
+  function renderShows(){
+    var t=T[lang], list=document.getElementById("dateList"), next=document.getElementById("next");
+    if(!upcoming.length){
+      list.innerHTML='<li class="date"><time></time><div><h3>'+t.none+'</h3><p>'+t.noneSub+'</p></div></li>';
+      next.hidden=true; return;
+    }
     list.innerHTML=upcoming.map(function(s){
       var d=new Date(s.date+"T12:00:00");
-      return '<li class="date"><time datetime="'+s.date+'"><b>'+d.getDate()+'</b><span>'+months[d.getMonth()]+' '+d.getFullYear()+'</span></time>'+
-        '<div><h3>'+esc(s.venue)+' · '+esc(s.city)+'</h3><p>'+esc(s.with)+'</p></div><span class="meta">'+esc(s.meta)+'</span></li>';
+      return '<li class="date"><time datetime="'+s.date+'"><b>'+d.getDate()+'</b><span>'+t.months[d.getMonth()]+' '+d.getFullYear()+'</span></time>'+
+        '<div><h3>'+esc(s.venue)+' · '+esc(s.city)+'</h3><p>'+esc(pick(s,"with"))+'</p></div><span class="meta">'+esc(pick(s,"meta"))+'</span></li>';
     }).join("");
-  }
-  var next=document.getElementById("next");
-  if(upcoming.length){
     var n=upcoming[0], d=new Date(n.date+"T12:00:00");
     var days=Math.round((new Date(n.date+"T00:00:00")-now)/864e5);
-    var when=days===0?"Ce soir":days===1?"Demain":"Dans "+days+" jours";
-    next.innerHTML='<div class="day">'+d.getDate()+'<small>'+months[d.getMonth()]+'</small></div>'+
-      '<div><span class="label">Prochain concert · '+when+'</span><strong>'+esc(n.venue)+', '+esc(n.city)+'</strong><p>'+esc(n.with)+' · '+esc(n.meta)+'</p></div>';
-  } else { next.hidden=true; }
+    var when=days===0?t.tonight:days===1?t.tomorrow:t.inDays(days);
+    next.innerHTML='<div class="day">'+d.getDate()+'<small>'+t.months[d.getMonth()]+'</small></div>'+
+      '<div><span class="label">'+t.next+' · '+when+'</span><strong>'+esc(n.venue)+', '+esc(n.city)+'</strong><p>'+esc(pick(n,"with"))+' · '+esc(pick(n,"meta"))+'</p></div>';
+  }
 
   // Player: one shared audio element for the three tracks.
   var audio=document.getElementById("audio"), rows=[].slice.call(document.querySelectorAll("#player li")), current=null;
@@ -428,10 +456,49 @@ footer img{width:6rem;height:auto;opacity:.9}
 
   var btn=document.getElementById("copy"), mail=document.getElementById("mail");
   btn.addEventListener("click",function(){
-    function selectIt(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Adresse sélectionnée";}
-    try{ navigator.clipboard.writeText(mail.textContent).then(function(){btn.textContent="Adresse copiée";},selectIt); }
+    function selectIt(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent=T[lang].selected;}
+    try{ navigator.clipboard.writeText(mail.textContent).then(function(){btn.textContent=T[lang].copied;},selectIt); }
     catch(e){ selectIt(); }
   });
+  // Language switch: French is written in the page, English comes from this table.
+  var EN={"Rock alternatif · Bordeaux": "Alternative rock · Bordeaux", "Écouter sur Spotify": "Listen on Spotify", "Toutes les dates": "All dates", "Saison 2026": "2026 season", "Ils nous ont déjà accueillis": "Venues we’ve played", "Le Steady, Le Salem, V and B, Le Dropkick, L’Antidote, Shop Suey, Fête de la musique au parc de Fontaudin (Pessac) et sur les remparts de Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Les Aganit’s, Kick Off Day.": "Le Steady, Le Salem, V and B, Le Dropkick, L’Antidote, Shop Suey, Fête de la Musique at Parc de Fontaudin (Pessac) and on the ramparts of Saint-Macaire, Friday Night Brouss’Art, La Belle Saison, Les Aganit’s, Kick Off Day.", "3 titres · à écouter ici": "3 tracks · listen here", "Premier single": "First single", "Deuxième single": "Second single", "Bonus · version acoustique": "Bonus · acoustic version", "Bordeaux · depuis 2023": "Bordeaux · since 2023", "Taillé pour le live.": "Born to play live.", "On vous attend devant la scène.": "See you in front of the stage.", "Daydreams of a Mad King (DMK), c’est du rock alternatif, du métal avec des touches de blues, de funk, d’indus et de prog : des ambiances changeantes, des mélodies qui restent en tête, et des morceaux qui montent en tension pour raconter des histoires.": "Daydreams of a Mad King (DMK) is alternative rock and metal with touches of blues, funk, industrial and prog: shifting moods, melodies that stick, and songs that build up tension to tell stories.", "Avec deux guitares, une batterie, un son lourd et une voix singulière, le trio bordelais est taillé pour le live : un set direct, sans artifice, où on joue ensemble et fort.": "With two guitars, drums, a heavy sound and a singular voice, the Bordeaux trio is built for the stage: a direct, no-frills set where we play together, and loud.", "Chant & guitare": "Vocals & guitar", "Guitare": "Guitar", "Batterie": "Drums", "Le set électrique complet, compos originales.": "The full electric set, all original songs.", "Nos morceaux revisités en acoustique.": "Our songs, reworked acoustic.", "Classiques rock et métal en version acoustique. Plus de 4 h de set au total.": "Rock and metal classics, played acoustic. Over 4 hours of music in total.", "Booking · presse": "Booking · press", "Écrivez-nous": "Write to us", "Copier l’adresse": "Copy address", "Production : PYKO PROD, Bordeaux.": "Production: PYKO PROD, Bordeaux.", "Les membres de DMK devant un mur de graffitis": "DMK in front of a graffiti wall", "Portrait du groupe DMK sous un hangar": "DMK band portrait under a shed roof", "DMK, séance photo 2026": "DMK, 2026 photo shoot", "Photo agrandie": "Enlarged photo", "Fermer": "Close", "Photo précédente": "Previous photo", "Photo suivante": "Next photo", "Lost in My Head, version acoustique": "Lost in My Head, acoustic version", "Les deux guitaristes, tête en arrière, en plein solo": "The two guitarists, heads thrown back, mid-solo", "Guitariste chanteur au chapeau melon dans la fumée": "Singer-guitarist in a bowler hat, in the smoke", "Batteur concentré en concert": "Drummer focused on stage", "Portrait d'un guitariste avec une Jackson en V": "Portrait of a guitarist with a Jackson V", "Chanteur au micro avec sa Les Paul au logo DMK": "Singer at the mic with his DMK Les Paul", "Batteur accoudé à la grosse caisse au logo DMK": "Drummer leaning on the DMK bass drum", "Les deux guitaristes face à face sur scène": "The two guitarists face to face on stage", "Guitariste chanteur sous les projecteurs, dans la fumée": "Singer-guitarist under the lights, in the smoke", "Guitariste en contre-plongée avec une guitare en V": "Low-angle shot of a guitarist with a V guitar", "Guitariste assis, sa Les Paul au logo DMK à la main": "Seated guitarist holding his DMK Les Paul", "Batteur devant la bannière du roi fou": "Drummer in front of the Mad King banner", "Guitariste à genoux sous un faisceau de lumière": "Guitarist on his knees in a spotlight", "Guitariste en contre-plongée, batteur en arrière-plan": "Low-angle shot of a guitarist, drummer behind", "Guitariste assis tenant une Gibson Les Paul au logo DMK": "Seated guitarist holding a DMK Gibson Les Paul", "Chanteur guitariste en pleine voix dans la fumée": "Singer-guitarist in full voice, in the smoke", "Chanteur au micro, chapeau sur la tête": "Singer at the mic, hat on", "Mains sur le manche d'une guitare en V": "Hands on the neck of a V guitar", "Sections": "Sections", "Retour en haut": "Back to top"};
+  var textNodes=[], walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+    var p=n.parentNode.nodeName; if(p==="SCRIPT"||p==="STYLE") return NodeFilter.FILTER_REJECT;
+    return EN[n.nodeValue.trim()]?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP; }});
+  while(walker.nextNode()) textNodes.push({n:walker.currentNode,fr:walker.currentNode.nodeValue});
+  var attrEls=[].slice.call(document.querySelectorAll("[alt],[aria-label]")).map(function(el){
+    return {el:el,alt:el.getAttribute("alt"),aria:el.getAttribute("aria-label")}; });
+  function trAttr(v){
+    if(!v||lang!=="en") return v;
+    if(EN[v]) return EN[v];
+    var prefixes=[["Agrandir : ",T.en.zoom],["Lire ",T.en.play],["Position dans ",T.en.seek]];
+    for(var i=0;i<prefixes.length;i++){ var p=prefixes[i]; if(v.indexOf(p[0])===0){ var rest=v.slice(p[0].length); return p[1]+(EN[rest]||rest); } }
+    return v;
+  }
+  function setLang(l){
+    lang=l==="en"?"en":"fr";
+    document.documentElement.lang=lang;
+    textNodes.forEach(function(o){ var k=o.fr.trim(); o.n.nodeValue=lang==="en"?o.fr.replace(k,EN[k]):o.fr; });
+    attrEls.forEach(function(o){ if(o.alt!==null) o.el.setAttribute("alt",trAttr(o.alt)); if(o.aria!==null) o.el.setAttribute("aria-label",trAttr(o.aria)); });
+    var md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute("content",T[lang].desc);
+    [].forEach.call(document.querySelectorAll(".lang button"),function(b){ b.setAttribute("aria-pressed",b.dataset.lang===lang?"true":"false"); });
+    document.getElementById("copy").textContent=lang==="en"?EN["Copier l’adresse"]:"Copier l’adresse";
+    renderShows();
+    try{ localStorage.setItem("dmk-lang",lang); }catch(e){}
+  }
+  [].forEach.call(document.querySelectorAll(".lang button"),function(b){ b.addEventListener("click",function(){ setLang(b.dataset.lang); }); });
+  var startLang=null;
+  var q=(location.search.match(/[?&]lang=(fr|en)/)||[])[1];
+  try{ startLang=q||localStorage.getItem("dmk-lang"); }catch(e){ startLang=q; }
+  if(!startLang) startLang=/^fr\b/i.test(navigator.language||"fr")?"fr":"en";
+  setLang(startLang);
+
+  // Back-to-top button: shows once the header has scrolled out of view.
+  var totop=document.getElementById("totop"); totop.hidden=false;
+  function onScroll(){ totop.classList.toggle("show", window.scrollY > window.innerHeight*0.8); }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  totop.addEventListener("click",function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); });
+
 })();
 </script>
 
